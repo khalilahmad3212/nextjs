@@ -1,6 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+// import { Navigation } from "swiper";
 
 import SliderCard from "./SliderCard";
 
@@ -31,10 +31,20 @@ export default function Testimonial() {
     <div className="mx-auto py-10">
       <Swiper
         spaceBetween={30}
-        slidesPerView={4}
+        slidesPerView={1}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
         style={{ padding: "70px 0px", background: "#F7F7F7" }}
+        breakpoints={{
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          700: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          }
+        }}
       >
         {persons.map(({ person_1, person_2 }, index) => (
           <SwiperSlide key={new Date().toString()}>

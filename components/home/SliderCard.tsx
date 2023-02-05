@@ -6,7 +6,7 @@ import { GoStar } from "react-icons/go";
 
 function SliderCard({ person_1, person_2, padding }: any) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 px-6 md:px-0">
       {[person_1, person_2].map(
         ({ image, name, date, heading, desc }, index) => {
           return (

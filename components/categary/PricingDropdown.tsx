@@ -32,7 +32,7 @@ function PricingDropdown() {
             <MultiRangeSlider
               min={0}
               max={1000}
-              onChange={({ min, max }) =>
+              onChange={({ min, max }: any) =>
                 console.log(`min = ${min}, max = ${max}`)
               }
             />

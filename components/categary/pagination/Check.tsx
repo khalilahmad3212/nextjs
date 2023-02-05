@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
-import Pagination from './Pagination';
-import data from './mock-data.json';
+import React, { useState, useMemo } from "react";
+import Pagination from "./Pagination";
+import data from "./mock-data.json";
 // import './style.scss';
 
 let PageSize = 10;
@@ -27,9 +27,9 @@ export default function App() {
           </tr>
         </thead>
         <tbody>
-          {currentTableData.map(item => {
+          {currentTableData.map((item) => {
             return (
-              <tr>
+              <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.first_name}</td>
                 <td>{item.last_name}</td>

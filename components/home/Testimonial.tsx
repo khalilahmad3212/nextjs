@@ -30,7 +30,7 @@ export default function Testimonial() {
   return (
     <div className="mx-auto py-10">
       <Swiper
-        spaceBetween={30}
+        spaceBetween={10}
         slidesPerView={1}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
@@ -38,12 +38,12 @@ export default function Testimonial() {
         breakpoints={{
           1024: {
             slidesPerView: 4,
-            spaceBetween: 30,
+            spaceBetween: 10,
           },
           700: {
             slidesPerView: 2,
-            spaceBetween: 30,
-          }
+            spaceBetween: 10,
+          },
         }}
       >
         {persons.map(({ person_1, person_2 }, index) => (

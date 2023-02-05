@@ -17,7 +17,7 @@ function Card({ image, title, description, button, margin, index }: any) {
       <p className="mt-2 text-sm text-slate-500 max-w-[200px]">{description}</p>
       {button && (
         <button className="bg-primary group-hover:bg-white text-white group-hover:text-gray-500 py-2 w-40 mt-4 text-sm flex items-center justify-center rounded-full">
-          {button}
+        {button}
         </button>
       )}
     </div>

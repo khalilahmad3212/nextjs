@@ -4,7 +4,7 @@ function AboutBreadCrumb() {
   return (
 <nav className="rounded-md w-full">
   <ol className="list-reset flex">
-    <li><a href="#" className="text-[#222222]">Home</a></li>
+    <li><a href="/" className="text-[#222222]">Home</a></li>
     <li><span className="text-gray-500 mx-2">/</span></li>
     {/* <li><a href="#" className="text-[#222222]">Products</a></li>
     <li><span className="text-gray-500 mx-2">/</span></li> */}

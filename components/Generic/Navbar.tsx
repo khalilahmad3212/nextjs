@@ -5,11 +5,7 @@ import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Dropdown from "./Dropdown";
 
-
-
-
 function Navbar() {
-
   return (
     <>
       <section className="relative mx-auto max-w-[1400px]">
@@ -26,7 +22,7 @@ function Navbar() {
                 <Dropdown />
               </li>
               <li>
-                <a href="#">Our Mission</a>
+                <Link href="/about">Our Mission</Link>
               </li>
             </ul>
 
@@ -34,10 +30,12 @@ function Navbar() {
           </div>
 
           <div className="flex items-center space-x-5">
+            <Link href="/about">
               <button className="bg-primary text-sm font-bold tracking-wider hover:bg-white hover:border-primary border-2 border-primary text-white hover:text-black  py-2 px-7 rounded-full">
                 Contact
               </button>
-            </div>
+            </Link>
+          </div>
           {/* <!-- Responsive navbar --> */}
           {/* <a className="xl:hidden flex mr-6 items-center" href="#">
             <svg

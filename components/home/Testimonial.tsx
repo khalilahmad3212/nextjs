@@ -4,29 +4,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import SliderCard from "./SliderCard";
 
+import client from "../../client";
+
 // Import Swiper styles
 import "swiper/css";
 
-import third from "/public/images/third.png";
-
-const persons = new Array(10).fill({
-  person_1: {
-    image: third,
-    name: "Babs A.",
-    date: "July 4, 2019",
-    heading: "EXPRESSIONIST FACIAL DEVICE",
-    desc: "orem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC. orem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.",
-  },
-  person_2: {
-    image: third,
-    name: "Angel P.",
-    date: "March 30, 2019",
-    heading: "WONDERFUL PRODUCT I AM ALREADY",
-    desc: "orem Ipsum is not simply random text. It has roots in a piece of classical.",
-  },
-});
-
-export default function Testimonial() {
+export default function Testimonial({ persons }: any) {
   return (
     <div className="mx-auto py-10">
       <Swiper
@@ -46,7 +29,7 @@ export default function Testimonial() {
           },
         }}
       >
-        {persons.map(({ person_1, person_2 }, index) => (
+        {persons.map(({ person_1, person_2 }: any, index: any) => (
           <SwiperSlide key={new Date().toString()}>
             <SliderCard
               person_1={person_1}

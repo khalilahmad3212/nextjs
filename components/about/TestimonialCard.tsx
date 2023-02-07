@@ -24,7 +24,7 @@ function TestimonialCard({ image, name, role }: any) {
         </div>
       </div>
       {bio && (
-        <div className="absolute z-10 bg-white shadow-2xl -top-20 left-5 w-96 h-96 rounded-lg overflow-hidden">
+        <div className="absolute z-10 bg-white shadow-2xl -top-20 -left-4 md:left-5 w-80 h-80 md:w-96 md:h-96 rounded-lg overflow-hidden">
           <div className="absolute top-0 right-3 p-2">
             <i
               className="fas fa-times text-gray-900 cursor-pointer"

@@ -23,15 +23,13 @@ function about() {
         <AboutBreadCrumb />
       </div>
       <Capabalities />
-
+      <Carousel />
       <Testimonial />
-
       <MediaBlock
         imageSrc={image}
         heading={heading}
         description={description}
       />
-      <Carousel />
       <Brands />
 
       <Banner />

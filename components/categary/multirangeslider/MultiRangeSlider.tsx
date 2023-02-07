@@ -16,12 +16,21 @@ const MultiRangeSlider = ({ min, max, onChange }: any) => {
     [min, max]
   );
 
+  /*
+    value = 1000
+    min = 1000
+    max = 10000
+    (1000 - 5000) / (10000 - 1000)) * 100
+    (4 / 9) * 100 = 
+  */
   // Set width of the range to decrease from the left side
   useEffect(() => {
     if (maxValRef.current) {
       const minPercent = getPercent(minVal);
       const maxPercent = getPercent(+maxValRef.current.value); // Preceding with '+' converts the value from type string to type number
-
+      console.log('min Percent: ', minPercent);
+      console.log('max Percent: ', maxPercent);
+      
       if (range.current) {
         range.current.style.left = `${minPercent}%`;
         range.current.style.width = `${maxPercent - minPercent}%`;
@@ -76,6 +85,8 @@ const MultiRangeSlider = ({ min, max, onChange }: any) => {
           const value = Math.max(+event.target.value, minVal + 1);
           setMaxVal(value);
           event.target.value = value.toString();
+          console.log('min Value: ', minVal);
+          
         }}
         className="thumb thumb--zindex-4"
       />

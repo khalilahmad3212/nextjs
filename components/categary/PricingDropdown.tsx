@@ -1,11 +1,16 @@
-import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import MultiRangeSlider from "./multirangeslider";
 
-function PricingDropdown() {
+import { CarContext } from "../../context/carContext";
+
+function PricingDropdown({ fetchCarsData }: any) {
+  const { minValue, maxValue, setminValue, setmaxValue } =
+    useContext(CarContext);
+
   const [isOpen, setisOpen] = useState(false);
+
   return (
     <div className="relative">
       <button
@@ -31,16 +36,17 @@ function PricingDropdown() {
           <div>
             <MultiRangeSlider
               min={0}
-              max={1000}
-              onChange={({ min, max }: any) =>
-                console.log(`min = ${min}, max = ${max}`)
-              }
+              max={100}
+              onChange={({ min, max }: any) => {
+                setminValue(min * 1000);
+                setmaxValue(max * 1000);
+              }}
             />
           </div>
           <div className="flex justify-evenly mt-4 pt-2 mb-8">
             {[
-              { title: "Min", price: 300 },
-              { title: "Max", price: 300 },
+              { title: "Min", price: minValue },
+              { title: "Max", price: maxValue },
             ].map(({ title, price }) => (
               <div
                 key={title + price}
@@ -52,7 +58,13 @@ function PricingDropdown() {
             ))}
           </div>
           <div className="flex justify-center">
-            <button className="bg-primary text-sm font-bold tracking-wider hover:bg-transparent hover:border-primary border-2 border-primary text-white hover:text-black  py-2 px-16 rounded-full">
+            <button
+              onClick={() => {
+                fetchCarsData();
+                setisOpen(false)
+              }}
+              className="bg-primary text-sm font-bold tracking-wider hover:bg-transparent hover:border-primary border-2 border-primary text-white hover:text-black  py-2 px-16 rounded-full"
+            >
               Apply
             </button>
           </div>

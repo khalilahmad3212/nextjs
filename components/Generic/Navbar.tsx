@@ -11,10 +11,9 @@ function Navbar() {
       <section className="relative mx-auto max-w-[1400px]">
         <nav className="flex justify-between bg-gray-white text-black pr-3">
           <div className="px-5 xl:px-12 py-6 flex w-full items-center">
-            <Link className="text-3xl font-bold font-heading" href="/">
-              {/* <!-- <img className="h-9" src="logo.png" alt="logo"> --> */}
-              Logo Here.
-            </Link>
+          <Link href="/">
+              <img src="/logo.jpeg" alt="Logo" className="w-16 md:w-32 xl:w-48" />
+          </Link>
 
             {/* <!-- Nav Links --> */}
             <ul className="hidden md:flex px-4 mx-auto font-heading space-x-12">

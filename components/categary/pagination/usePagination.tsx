@@ -1,7 +1,7 @@
-import React from 'react';
-import { useMemo } from 'react';
+import React from "react";
+import { useMemo } from "react";
 
-export const DOTS = '...';
+export const DOTS = "...";
 
 const range = (start: any, end: any) => {
   let length = end - start + 1;
@@ -12,13 +12,15 @@ export const usePagination = ({
   totalCount,
   pageSize,
   siblingCount = 1,
-  currentPage
+  currentPage,
 }: any) => {
   const paginationRange = useMemo(() => {
     const totalPageCount = Math.ceil(totalCount / pageSize);
 
     // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS
     const totalPageNumbers = siblingCount + 5;
+    console.log("Total Count: ", totalCount);
+    console.log("Page Size: ", pageSize);
 
     /*
       If the number of pages is less than the page numbers we want to show in our
@@ -44,7 +46,6 @@ export const usePagination = ({
 
     const firstPageIndex = 1;
     const lastPageIndex = totalPageCount;
-
     if (!shouldShowLeftDots && shouldShowRightDots) {
       let leftItemCount = 3 + 2 * siblingCount;
       let leftRange = range(1, leftItemCount);

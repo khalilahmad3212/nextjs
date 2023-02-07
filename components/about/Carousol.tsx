@@ -21,13 +21,21 @@ const carousel_images = [
 
 export default function Carousol() {
   return (
-    <div className=" max-w-[1440px] mx-auto md:px-32 py-20">
+    <div className=" max-w-[1440px] mx-auto md:px-2 py-20">
 
     <Swiper
-      spaceBetween={30}
-      slidesPerView={3}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
+        spaceBetween={50}
+        slidesPerView={1}
+        breakpoints={{
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          700: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+        }}
 >
       {carousel_images.map((image) => (
         <SwiperSlide key={new Date().toString()}>

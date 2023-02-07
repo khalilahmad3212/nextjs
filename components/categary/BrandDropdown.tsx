@@ -1,6 +1,8 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import Link from "next/link";
+import React, { useContext, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { CarContext } from "../../context/carContext";
 
 import car_icon from "/public/images/car_icon.svg";
 
@@ -26,8 +28,11 @@ const dropdownItems = [
     image: car_icon,
   },
 ];
-function BrandDropdown() {
+function BrandDropdown({ fetchCarsData }: any) {
   const [isOpen, setisOpen] = useState(false);
+
+  const { setbrand } : any = useContext(CarContext);
+
   return (
     <div className="relative">
       <button
@@ -45,11 +50,18 @@ function BrandDropdown() {
       >
         <ul className=" z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow ">
           {dropdownItems.map(({ content, image }) => (
-            <li key={content}>
-              <a href="#" className="flex gap-4 py-2 px-4 hover:bg-gray-100">
+            <li
+              key={content}
+              onClick={() => {
+                setbrand(content);
+                fetchCarsData();
+                setisOpen(false);
+              }}
+            >
+              <div className="flex gap-4 py-2 px-4 hover:bg-gray-100 cursor-pointer">
                 <Image src={image} width={30} height={10} alt="icon car" />
                 <span className="text-sm">{content}</span>
-              </a>
+              </div>
             </li>
           ))}
         </ul>

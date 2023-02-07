@@ -1,41 +1,41 @@
-import React from 'react'
-import Heading from '../../components/categary/Heading'
-import NavigationAndFilter from '../../components/categary/NavigationAndFilter'
-import Pagignation from '../../components/categary/Pagignation'
-import Cars from '../../components/Generic/Cars'
-import Footer from '../../components/Generic/Footer'
-import Navbar from '../../components/Generic/Navbar'
-import TopBar from '../../components/home/TopBar'
+import React, { useContext, useEffect, useState } from "react";
+import Heading from "../../components/categary/Heading";
+import NavigationAndFilter from "../../components/categary/NavigationAndFilter";
 
+import Footer from "../../components/Generic/Footer";
+import Navbar from "../../components/Generic/Navbar";
+import TopBar from "../../components/home/TopBar";
 
-import client from '../../client';
-import Check from '../../components/categary/pagination/Check'
+import client from "../../client";
+import PaginatedData from "../../components/categary/pagination/PaginatedData";
 
-function Categary({ cars_data }: any) {
+import CarProvider, { CarContext } from "../../context/carContext";
+
+function Categary({ cars_data, page_heading }: any) {
+  const { setcarsData, settotalLength } = useContext(CarContext);
+
+  useEffect(() => {
+    setcarsData(cars_data)
+    settotalLength(cars_data.length);
+  }, []);
+
   return (
     <>
-        <TopBar />
-        <Navbar />
-        <Heading />
-        <NavigationAndFilter />
-        <Cars cars_data={cars_data}/>
-        <Pagignation />
-        <Check />
-        <Footer />
+      <TopBar />
+      <Navbar />
+      <Heading heading={page_heading} />
+      <NavigationAndFilter categary={page_heading} />
+      <PaginatedData />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default Categary
-
+export default Categary;
 
 export async function getStaticPaths() {
-  const paths = await client.fetch(
-    `*[_type == "categary"]`
-  );
-  
-  // console.log('\n\n\n check: ', paths, '\n\n\n');
-  
+  const paths = await client.fetch(`*[_type == "categary"]`);
+
   return {
     paths: paths.map(({ slug }: any) => ({ params: { slug } })),
     fallback: false,
@@ -43,21 +43,29 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: any) {
-  
+
+  let { slug = "electric-car" } = context;
+  let categary_res =
+    await client.fetch(`*[_type == 'categary' && slug == '${slug}']{
+    categary
+  }`);
+
+  let { categary } = categary_res[0];
+
   // It's important to default the slug so that it doesn't return "undefined"
-  const cars_data = await client.fetch(`*[_type == 'car']{
+  const cars_data =
+    await client.fetch(`[_type=="car" && references([_type=="categary" && slug == '${slug}']._id)]{
     title,
     description,
     "imageUrl": car_image.asset->url
   }`);
 
-  // console.log('carData: : : ', cars_data.length);
-  
-  // console.log('\n\nCars: ', cars_data);
-    
+  console.log("cars; data: ", cars_data);
+
   return {
     props: {
-      cars_data
-    }
-  }
+      cars_data,
+      page_heading: categary,
+    },
+  };
 }

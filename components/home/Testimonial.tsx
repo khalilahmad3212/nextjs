@@ -15,9 +15,6 @@ export default function Testimonial({ persons }: any) {
       <Swiper
         spaceBetween={10}
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-        style={{ padding: "70px 0px", background: "#F7F7F7" }}
         breakpoints={{
           1024: {
             slidesPerView: 4,

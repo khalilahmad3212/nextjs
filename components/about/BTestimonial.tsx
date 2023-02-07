@@ -10,23 +10,23 @@ const MediaBlock = ({ imageSrc, heading, description }: any) => {
 
       </div>
 
-      <div className="flex">
-        <div className="w-1/2 flex items-center">
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-1/2 flex items-center">
           <Image
             src={imageSrc}
             alt="Image"
-            className="w-full h-5/6 relative -right-10"
+            className="w-full h-5/6 relative md:-right-10"
           />
         </div>
 
-        <div className="w-1/2 px-28 bg-gray-200 flex flex-col justify-center">
+        <div className="md:w-1/2 px-5 py-8 md:px-28 bg-gray-200 flex flex-col justify-center">
           <div className="text-3xl">
             <span className="bg-primary border-[7px] border-gray-500/60 text-gray-800 rounded-full pl-2 w-14 h-14 flex items-center justify-center">
               <i className="fas fa-play text-white"></i>
             </span>
           </div>
           <h2 className="text-xl font-bold mt-4">{heading}</h2>
-          <p className="text-gray-500 mt-2">{description}</p>
+          <p className="text-gray-500 mt-2 text-justify">{description}</p>
         </div>
       </div>
     </>

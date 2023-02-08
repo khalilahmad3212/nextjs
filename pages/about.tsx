@@ -15,7 +15,7 @@ let heading = "Eu tincidunt amet vulputate consectetur";
 let description =
   "Nunc sed lorem a a id. Faucibus sed amet arcu mattis elementum erat. Mauris id donec et tellus ac aliquam augue erat aliquam. Non vel dapibus sociis porttitor sit quam. Lectus feugiat mattis augue turpis duis dapibus diam maecenas. Faucibus massa dictumst aliquam mauris tempus purus sit. Nulla aliquet sed blandit odio enim lorem quis. Elementum adipiscing in blandit ligula fringilla. Suspendisse elementum senectus in convallis ut tempus sed.";
 
-import topImage from "/public/images/about/about_top.png";
+import topImage from "/public/images/about/about_top.jpeg";
 import Image from "next/image";
 
 function about() {

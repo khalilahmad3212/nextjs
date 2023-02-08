@@ -19,7 +19,7 @@ function CarData({ title, description, tags }: any) {
         </p>
 
         <div className="flex flex-wrap gap-5">
-          {tags.map((item:string) => (
+        {tags ? tags.map((item:string) => (
             <div
               key={item + "as"}
               className="flex relative flex-row items-center"
@@ -29,7 +29,7 @@ function CarData({ title, description, tags }: any) {
                 {item}
               </span>
             </div>
-          ))}
+          )) : null}
         </div>
       </div>
 

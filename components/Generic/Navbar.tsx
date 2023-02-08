@@ -5,15 +5,19 @@ import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Dropdown from "./Dropdown";
 
+import desktopLogo from '/public/images/home/desktop_logo.jpeg'
+import mobileLogo from '/public/images/home/mobil_logo.jpeg'
+
 function Navbar() {
   return (
     <>
       <section className="relative mx-auto max-w-[1400px]">
         <nav className="flex justify-between bg-gray-white text-black pr-3">
           <div className="px-5 xl:px-12 py-6 flex w-full items-center">
-          <Link href="/">
-              <img src="/logo.jpeg" alt="Logo" className="w-16 md:w-32 xl:w-48" />
-          </Link>
+            <Link className="text-3xl font-bold font-heading" href="/">
+              <Image className="h-9 w-auto hidden md:block" src={desktopLogo} alt="logo" />
+              <Image className="h-9 w-auto md:hidden" src={mobileLogo} alt="logo" />
+            </Link>
 
             {/* <!-- Nav Links --> */}
             <ul className="hidden md:flex px-4 mx-auto font-heading space-x-12">
@@ -29,10 +33,10 @@ function Navbar() {
           </div>
 
           <div className="flex items-center space-x-5">
-            <Link href="/about">
-              <button className="bg-primary text-sm font-bold tracking-wider hover:bg-white hover:border-primary border-2 border-primary text-white hover:text-black  py-2 px-7 rounded-full">
-                Contact
-              </button>
+            <Link href='/about'>
+            <button className="bg-primary text-sm font-bold tracking-wider hover:bg-white hover:border-primary border-2 border-primary text-white hover:text-black  py-2 px-7 rounded-full">
+              Contact
+            </button>
             </Link>
           </div>
           {/* <!-- Responsive navbar --> */}

@@ -1,0 +1,33 @@
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+function Car({ imageUrl, title }: any) {
+  return (
+    <Link href='/'>
+      <div className="flex flex-col group cursor-pointer bg-white rounded-xl group">
+        <div className="flex items-center justify-center">
+          <Image
+            className=" bg-gray-300"
+            src={imageUrl}
+            alt="icon"
+            width={500}
+            height={100}
+          />
+        </div>
+        <div className="px-8 group-hover:bg-primary/70 rounded-xl">
+          <p className="text-lg text-slate-500 mt-3">SUVS</p>
+          <p className="pb-2  text-xl font-medium text-slate-900 border-b-2">
+            {title}
+          </p>
+          <p className="text-end my-3">
+            <span className="font-medium">Xd0JD</span> /{" "}
+            <span className=" text-gray-400">day</span>
+          </p>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+export default Car;

@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function Car({ imageUrl, title }: any) {
+function Car({ imageUrl, title, _id }: any) {
   return (
-    <Link href='/'>
+    <Link href={`/product/${_id}`}>
       <div className="flex flex-col group cursor-pointer bg-white rounded-xl group">
         <div className="flex items-center justify-center">
           <Image

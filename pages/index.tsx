@@ -46,6 +46,7 @@ export default function Home({ cars_data, persons }: any) {
 export async function getStaticProps() {
   // It's important to default the slug so that it doesn't return "undefined"
   const cars_data = await client.fetch(`*[_type == 'car']{
+    _id,
     title,
     description,
     "imageUrl": car_image.asset->url

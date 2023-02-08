@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import SliderCard from "./SliderCard";
 
-import client from "../../client";
 
 // Import Swiper styles
 import "swiper/css";

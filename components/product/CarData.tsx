@@ -6,20 +6,20 @@ import BookingForm from "./BookingForm";
 
 function CarData({ title, description, tags }: any) {
   return (
-    <div className=" max-w-[1440px] mx-auto px-24 pt-12 flex gap-12 mb-24">
+    <div className=" max-w-[1440px] mx-auto px-6 md:px-24 pt-12 flex flex-col md:flex-row gap-12 mb-24">
       {/* left Portion */}
-      <div className="w-1/2 flex flex-col">
+      <div className="md:w-1/2 flex flex-col">
         <p className="text-xl uppercase text-gray-400">STANDARD PLUS</p>
         <h4 className=" text-3xl font-bold mt-5 mb-10">{title}</h4>
 
         <p className="text-xl uppercase text-gray-600 mb-5">STANDARD PLUS</p>
 
-        <p className="text-lg text-gray-400 mb-12">
+        <p className="text-lg text-justify text-gray-400 mb-12">
           {description}
         </p>
 
         <div className="flex flex-wrap gap-5">
-        {tags ? tags.map((item:string) => (
+          {tags.map((item:string) => (
             <div
               key={item + "as"}
               className="flex relative flex-row items-center"
@@ -29,12 +29,12 @@ function CarData({ title, description, tags }: any) {
                 {item}
               </span>
             </div>
-          )) : null}
+          ))}
         </div>
       </div>
 
       {/* Right Portion */}
-      <div className="w-1/2 px-10 text-gray-800">
+      <div className="md:w-1/2 md:px-10 text-gray-800">
             <BookingForm />
       </div>
     </div>

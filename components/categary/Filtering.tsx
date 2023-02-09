@@ -5,16 +5,16 @@ import PricingDropdown from "./PricingDropdown";
 import TransmissionDropdown from "./TransmissionDropdown";
 
 function Filtering({ fetchCarsData }: any) {
-  const { firstIndex, lastIndex, totalLength }: any = useContext(CarContext);
+  const { firstIndex, lastIndex, totalLength } = useContext(CarContext);
 
   return (
-    <div className="flex items-center">
+    <div className="flex flex-col-reverse gap-2 md:gap-0 mt-3 md:mt-0 md:flex-row md:items-center">
       <p className=" min-w-max mr-6">
         Showing {firstIndex + 1 + " "}-
         {"   " + (lastIndex > totalLength) ? totalLength : lastIndex} of{" "}
         {totalLength} cars
       </p>
-      <div className="flex gap-4">
+      <div className="flex gap-2 flex-wrap md:flex-nowrap md:gap-4">
         <PricingDropdown fetchCarsData={fetchCarsData} />
         <BrandDropdown fetchCarsData={fetchCarsData} />
         <TransmissionDropdown fetchCarsData={fetchCarsData} />

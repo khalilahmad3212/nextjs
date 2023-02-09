@@ -6,13 +6,13 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import Dropdown from "./Dropdown";
 
 import desktopLogo from '/public/images/home/desktop_logo.jpeg'
-import mobileLogo from '/public/images/home/mobile_logo.jpeg'
+import mobileLogo from '/public/images/home/mobil_logo.jpeg'
 
 function Navbar() {
   return (
     <>
       <section className="relative mx-auto max-w-[1400px]">
-        <nav className="flex justify-between bg-gray-white text-black pr-3">
+        <nav className="flex justify-between bg-gray-white text-black pr-3 md:pr-11">
           <div className="px-5 xl:px-12 py-6 flex w-full items-center">
             <Link className="text-3xl font-bold font-heading" href="/">
               <Image className="h-9 w-auto hidden md:block" src={desktopLogo} alt="logo" />

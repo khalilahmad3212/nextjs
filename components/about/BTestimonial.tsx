@@ -4,10 +4,11 @@ import React from "react";
 const MediaBlock = ({ imageSrc, heading, description }: any) => {
   return (
     <>
-      <div className=" max-w-[1440px] mx-auto px-16 mb-20">
-      <h2 className="text-xl text-gray-400 font-normal mt-4">Donec</h2>
-        <h1 className="text-2xl font-[500] max-w-[230px] mt-2">Massa luctus dui suspendisse mi. Id id</h1>
-
+      <div className=" max-w-[1440px] mx-auto px-4 md:px-16 mb-20">
+        <h2 className="text-xl text-gray-400 font-normal mt-4">Donec</h2>
+        <h1 className="text-2xl font-[500] max-w-[230px] mt-2">
+          Massa luctus dui suspendisse mi. Id id
+        </h1>
       </div>
 
       <div className="flex flex-col md:flex-row">

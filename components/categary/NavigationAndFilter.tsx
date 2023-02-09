@@ -5,7 +5,7 @@ import Filtering from './Filtering'
 
 function NavigationAndFilter({ categary }: any) {
 
-  const { setcarsData, slug, minValue, maxValue, brand, transmission }: any = useContext(CarContext);
+  const { setcarsData, slug, minValue, maxValue, brand, transmission } = useContext(CarContext);
 
   async function fetchCarsData() {
     fetch('/api/cars-data?' + new URLSearchParams({
@@ -25,7 +25,7 @@ function NavigationAndFilter({ categary }: any) {
   }
 
   return (
-    <div className='max-w-[1440px] mx-auto flex justify-between px-12 mt-8'>
+    <div className='max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between px-4 md:px-12 mt-8'>
         <BreadCrumb categary={categary}/>
         <Filtering fetchCarsData={fetchCarsData}/>
     </div>

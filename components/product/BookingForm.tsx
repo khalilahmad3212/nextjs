@@ -3,17 +3,17 @@ import React from "react";
 
 function BookingForm() {
   return (
-    <form className="border-[1px] border-gray-300 px-6 py-6 rounded-lg">
-      <div className="flex flex-row gap-4 justify-around">
+    <form className="border-[1px] border-gray-300 px-4 md:px-6 py-6 rounded-lg">
+      <div className="flex flex-col md:flex-row gap-4 justify-around">
         <input
           type="text"
           placeholder="First name (optional)"
-          className="border-[1px] border-gray-300 focus:outline-1 focus:outline-gray-300 pl-5 py-3 rounded-md w-1/2"
+          className="border-[1px] border-gray-300 focus:outline-1 focus:outline-gray-300 pl-5 py-3 rounded-md md:w-1/2"
         />
         <input
           type="text"
           placeholder="First name (optional)"
-          className="border-[1px] border-gray-300 pl-5 py-3 rounded-md w-1/2 focus:outline-1 focus:outline-gray-300"
+          className="border-[1px] border-gray-300 pl-5 py-3 rounded-md md:w-1/2 focus:outline-1 focus:outline-gray-300"
         />
       </div>
       <div>
@@ -31,8 +31,8 @@ function BookingForm() {
         />
       </div>
 
-      <div className="flex flex-row gap-2 mt-4 w-full">
-        <div className="relative w-3/4">
+      <div className="flex flex-col md:flex-row gap-2 mt-4 w-full">
+        <div className="relative md:w-3/4">
           <label
             htmlFor="trip_start_date"
             className=" absolute left-3 text-gray-300 top-1 text-sm"
@@ -46,7 +46,7 @@ function BookingForm() {
             className="border-[1px] border-gray-300 w-full px-5 pb-3 pt-5 rounded-md focus:outline-1 focus:outline-gray-300"
           />
         </div>
-        <div className="relative w-2/4">
+        <div className="relative md:w-2/4">
           <label
             htmlFor="trip_start_time"
             className="absolute left-3 text-gray-300 top-1 text-sm"
@@ -62,8 +62,8 @@ function BookingForm() {
         </div>
       </div>
 
-      <div className="flex flex-row gap-2 mt-4 w-full">
-        <div className="relative w-3/4">
+      <div className="flex flex-col md:flex-row gap-2 mt-4 w-full">
+        <div className="relative md:w-3/4">
           <label
             htmlFor="trip_end_date"
             className=" absolute left-3 text-gray-300 top-1 text-sm"
@@ -77,7 +77,7 @@ function BookingForm() {
             className="border-[1px] border-gray-300 w-full px-5 pb-3 pt-5 rounded-md focus:outline-1 focus:outline-gray-300"
           />
         </div>
-        <div className="relative w-2/4">
+        <div className="relative md:w-2/4">
           <label
             htmlFor="trip_end_time"
             className="absolute left-3 text-gray-300 top-1 text-sm"

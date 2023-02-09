@@ -18,24 +18,23 @@ import 'swiper/scss/pagination';
 
 export default function ProductSlider({sliderImages}: any) {
   return (
-    <div className="mx-auto py-10 px-10">
-      {sliderImages && (
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={1}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-          navigation={true}
-          modules={[Navigation]}
-          style={{padding: '20px 45px', height: '500px'}}
-        >
-          {sliderImages.map(() => (
-            <SwiperSlide key={new Date().toString()}>
-              <SliderCard images={sliderImages} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+    <div className="mx-auto py-10 md:px-10">
+      <Swiper
+        spaceBetween={30}
+        slidesPerView={1}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+        navigation={true}
+        modules={[Navigation]}
+        className="md:h-[500px] md:px-5"
+        // style={{padding: '20px 45px', height: '500px'}}
+      >
+        {sliderImages.map(() => (
+          <SwiperSlide key={new Date().toString()}>
+            <SliderCard images={sliderImages} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }

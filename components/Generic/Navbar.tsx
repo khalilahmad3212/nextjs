@@ -6,7 +6,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import Dropdown from "./Dropdown";
 
 import desktopLogo from '/public/images/home/desktop_logo.jpeg'
-import mobileLogo from '/public/images/home/mobil_logo.jpeg'
+import mobileLogo from '/public/images/home/mobile_logo.jpeg'
 
 function Navbar() {
   return (

@@ -1,6 +1,5 @@
 import React from "react";
-import { useRouter } from 'next/router'
-import Footer from "../../components/Generic/Footer";
++import Footer from "../../components/Generic/Footer";
 import Navbar from "../../components/Generic/Navbar";
 import CarData from "../../components/product/CarData";
 import TopBar from "../../components/home/TopBar";

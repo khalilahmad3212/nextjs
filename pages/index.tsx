@@ -1,3 +1,11 @@
+/*
+  How are you?
+  I am fine.
+  Who are you?
+  I am you.
+  Ooooh
+*/
+
 import { Inter } from "@next/font/google";
 import TopBar from "../components/home/TopBar";
 import Navbar from "../components/Generic/Navbar";

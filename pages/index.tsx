@@ -9,7 +9,7 @@
 import { Inter } from "@next/font/google";
 import TopBar from "../components/home/TopBar";
 import Navbar from "../components/Generic/Navbar";
-import Footer from "../components/Generic/Footer";
+import Fitooter from "../components/Generic/Footer";
 import Hero from "../components/home/Hero";
 import CookieBanner from "../components/home/CookieBanner";
 import WhyUs from "../components/home/WhyUs";

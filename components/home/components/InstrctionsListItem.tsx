@@ -1,7 +1,15 @@
 import Image from "next/image";
 import React from "react";
+import getImageUrl from "../../../utils/getImageUrl";
 
-function Card({ image, title, description, button, margin, index }: any) {
+function InstrctionsListItem({
+  instructionHeading,
+  body,
+  instructionIcon,
+  button,
+  margin,
+  index,
+}: any) {
   return (
     <div
       className={`${
@@ -12,16 +20,22 @@ function Card({ image, title, description, button, margin, index }: any) {
       <span className="text-6xl absolute left-36 -z-10 -top-10 text-gray-500 group-hover:text-black font-bold">
         {"0" + (index + 1)}
       </span>
-      <Image src={image} alt="icon" width={50} height={10} className="group-hover:text-white" />
-      <p className="text-xl font-medium text-slate-700 mt-3">{title}</p>
-      <p className="mt-2 text-sm text-slate-500 max-w-[200px]">{description}</p>
+      <Image
+        src={getImageUrl(instructionIcon)}
+        alt="icon"
+        width={50}
+        height={10}
+        className="group-hover:text-white"
+      />
+      <p className="text-xl font-medium text-slate-700 mt-3">{instructionHeading}</p>
+      <p className="mt-2 text-sm text-slate-500 max-w-[200px]">{body}</p>
       {button && (
         <button className="bg-primary group-hover:bg-white text-white group-hover:text-gray-500 py-2 w-40 mt-4 text-sm flex items-center justify-center rounded-full">
-        {button}
+          {button}
         </button>
       )}
     </div>
   );
 }
 
-export default Card;
+export default InstrctionsListItem;

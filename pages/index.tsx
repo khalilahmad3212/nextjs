@@ -1,11 +1,12 @@
+
+/*
+  Everything is uptodate
+*/ 
 import { Inter } from "@next/font/google";
 import TopBar from "../components/home/TopBar";
 import Navbar from "../components/Generic/Navbar";
-import Fitooter from "../components/Generic/Footer";
 import Hero from "../components/home/Hero";
 import CookieBanner from "../components/home/CookieBanner";
-import Cars from "../components/Generic/Cars";
-import Process from "../components/home/Instructions";
 import Banner from "../components/home/Banner";
 import Image from "next/image";
 

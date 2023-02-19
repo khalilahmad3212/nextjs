@@ -1,8 +1,8 @@
 import React from "react";
 import AboutBreadCrumb from "../components/about/AboutBreadCrumb";
 import Brands from "../components/about/Brands";
-import Capabalities from "../components/about/Capabalities";
-import Testimonial from "../components/about/Testimonial";
+import Capabalities from "../components/about/Goals";
+import Testimonial from "../components/about/Leader";
 import Footer from "../components/Generic/Footer";
 import Navbar from "../components/Generic/Navbar";
 import Banner from "../components/home/Banner";
@@ -17,21 +17,39 @@ let description =
 
 import topImage from "/public/images/about/about_top.jpeg";
 import Image from "next/image";
+import client from "../client";
+import getImageUrl from "../utils/getImageUrl";
+import Head from "next/head";
+import Leader from "../components/about/Leader";
 
-function about() {
+function About({ data, leaders }: any) {
   return (
     <>
+      <Head>
+        <title>{data.title}</title>
+      </Head>
       <TopBar />
       <Navbar />
       <div className="mb-7">
-        <Image src={topImage} alt='about image' className="w-full"/>
+        <Image
+          src={getImageUrl(data.mainImage)}
+          alt="about image"
+          width={200}
+          height={200}
+          className="w-full"
+        />
       </div>
+      
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
         <AboutBreadCrumb />
       </div>
-      <Capabalities />
-      <Carousel />
-      <Testimonial />
+      
+      <Capabalities goals={data.goals[0].goalsList}/>
+      
+      <Carousel images={data.imageGallery[0].images}/>
+      
+      <Leader leaders={leaders}/>
+      
       <MediaBlock
         imageSrc={image}
         heading={heading}
@@ -45,4 +63,17 @@ function about() {
   );
 }
 
-export default about;
+export default About;
+
+export async function getStaticProps() {
+
+  const missionData = await client.fetch(`*[_type == 'mission']`);
+  const leaders = await client.fetch(`*[_type == 'leader']`);
+  
+  return {
+    props: {
+      data: missionData[0],
+      leaders
+    },
+  };
+}

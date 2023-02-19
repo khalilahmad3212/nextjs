@@ -9,17 +9,18 @@ import slide_2 from "/public/images/about/carousel/slide_2.png";
 // import slide_3 from "/public/images/about/carousel/slide_3.png";
 
 import Image from "next/image";
+import getImageUrl from "../../utils/getImageUrl";
 
-const carousel_images = [
-    slide_2,
-    slide_2,
-    slide_2,
-    slide_2,
-    slide_2,
-    slide_2,
-];
+// const carousel_images = [
+//     slide_2,
+//     slide_2,
+//     slide_2,
+//     slide_2,
+//     slide_2,
+//     slide_2,
+// ];
 
-export default function Carousol() {
+export default function Carousol({ images }: any) {
   return (
     <div className=" max-w-[1440px] mx-auto md:px-2 py-20">
 
@@ -36,10 +37,14 @@ export default function Carousol() {
             spaceBetween: 10,
           },
         }}
+        style={{
+          height: '300px',
+          overflow: 'hidden'
+        }}
 >
-      {carousel_images.map((image) => (
-        <SwiperSlide key={new Date().toString()}>
-          <Image src={image} alt="image" className="w-full h-min" />
+      {images.map((image: any) => (
+        <SwiperSlide key={image._key}>
+          <Image src={getImageUrl(image)} alt="image" width={100} height={100} className="w-full h-min" />
         </SwiperSlide>
       ))}
     </Swiper>

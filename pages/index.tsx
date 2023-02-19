@@ -1,7 +1,3 @@
-
-/*
-  Everything is uptodate
-*/ 
 import { Inter } from "@next/font/google";
 import TopBar from "../components/home/TopBar";
 import Navbar from "../components/Generic/Navbar";
@@ -60,15 +56,6 @@ export default function Home({ data }: any) {
 
 export async function getStaticProps() {
   const homeData = await client.fetch(`*[_type == 'home']`);
-
-  let data = {};
-
-  let title = homeData[0].title;
-
-  let content = homeData[0].content[0];
-  let features = homeData[0].features[0]
-  let instructions = homeData[0].instructions[0]
-
 
   return {
     props: {

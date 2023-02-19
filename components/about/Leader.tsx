@@ -5,7 +5,8 @@ import second from "/public/images/about/second.png";
 import third from "/public/images/about/third.png";
 import forth from "/public/images/about/forth.png";
 
-import TestimonialCard from "./TestimonialCard";
+import TestimonialCard from "./components/LeaderListItem";
+import LeadersList from "./components/LeadersList";
 
 const testimonial_data = [
   {
@@ -29,20 +30,15 @@ const testimonial_data = [
     role: "Chief Executive Officer",
   },
 ];
-function Testimonial() {
+function Leader({ leaders }: any) {
 
 
   return (
     <div className=" max-w-[1440px] mx-auto mb-32 mt-10">
       <h1 className=" text-center font-[500] text-3xl mb-14">Leadership</h1>
-
-      <div className="flex flex-col gap-8 md:flex-row justify-evenly px-10 sm:px-32">
-        {testimonial_data.map(({ image, name, role }) => (
-          <TestimonialCard key={name + role + (new Date().toString())} image={image} name={name} role={role}/> 
-        ))}
-      </div>
+      <LeadersList leaders={leaders}/>
     </div>
   );
 }
 
-export default Testimonial;
+export default Leader;

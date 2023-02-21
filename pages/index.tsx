@@ -19,7 +19,7 @@ import Instructions from "../components/home/Instructions";
 
 import printData from '../print';
 
-export default function Home({ data, navigation }: any) {
+export default function Home({ data, topNavigation, footerNavigation }: any) {
 
 
   return (
@@ -28,7 +28,7 @@ export default function Home({ data, navigation }: any) {
         <title>{data.title}</title>
       </Head>
       <TopBar />
-      <Navbar navigation={navigation}/>
+      <Navbar navigation={topNavigation}/>
       <Hero content={data.content[0]}/>
       <CookieBanner />
 
@@ -51,7 +51,7 @@ export default function Home({ data, navigation }: any) {
       
       {/* <Testimonial persons={persons}/> */}
       <Banner />
-      <Footer />
+      <Footer navigations={footerNavigation}/>
     </>
   );
 }
@@ -60,14 +60,16 @@ export async function getStaticProps() {
   const homeData = await client.fetch(`*[_type == 'home']`);
 
   let navigationData = await client.fetch(`*[_type == 'navigation']`);
-  navigationData = navigationData.filter((item: any) => (item.navId.current === 'mainMenu'));
-  
+  let topNavigationData = navigationData.filter((item: any) => (item.navId.current === 'mainMenu'));
+  let footerNavigationData = navigationData.filter((item: any) => (item.navId.current !== 'mainMenu'));
+
   printData(navigationData)
   
   return {
     props: {
       data: homeData[0],
-      navigation: navigationData[0]
+      topNavigation: topNavigationData[0],
+      footerNavigation: footerNavigationData
     },
   };
 }

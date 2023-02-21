@@ -29,7 +29,7 @@ function Product({ car_data }: any) {
 export default Product;
 
 export async function getStaticPaths() {
-  const paths = await client.fetch(`*[_type == "car"]{_id}`);
+  const paths = await client.fetch(`*[_type == "page"]{_id}`);
   console.log("\n\n\n\nEntered\n\n\n\n");
 
   return {

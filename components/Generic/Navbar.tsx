@@ -5,38 +5,50 @@ import React, { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Dropdown from "./Dropdown";
 
-import desktopLogo from '/public/images/home/desktop_logo.jpeg'
-import mobileLogo from '/public/images/home/mobile_logo.jpeg'
+import desktopLogo from "/public/images/home/desktop_logo.jpeg";
+import mobileLogo from "/public/images/home/mobile_logo.jpeg";
 
-function Navbar() {
+function Navbar({ navigation }: any) {
   return (
     <>
       <section className="relative mx-auto max-w-[1400px]">
         <nav className="flex justify-between bg-gray-white text-black pr-3 md:pr-11">
           <div className="px-5 xl:px-12 py-6 flex w-full items-center">
             <Link className="text-3xl font-bold font-heading" href="/">
-              <Image className="h-9 w-auto hidden md:block" src={desktopLogo} alt="logo" />
-              <Image className="h-9 w-auto md:hidden" src={mobileLogo} alt="logo" />
+              <Image
+                className="h-9 w-auto hidden md:block"
+                src={desktopLogo}
+                alt="logo"
+              />
+              <Image
+                className="h-9 w-auto md:hidden"
+                src={mobileLogo}
+                alt="logo"
+              />
             </Link>
 
             {/* <!-- Nav Links --> */}
             <ul className="hidden md:flex px-4 mx-auto font-heading space-x-12">
               <li className="relative">
-                <Dropdown />
+                <Dropdown dropdownItems={navigation.dropdownItems} />
               </li>
-              <li>
-                <Link href="/about">Our Mission</Link>
-              </li>
+              {navigation.navItem.map(
+                ({ text, navigationItemUrl, _key }: any) => (
+                  <li key={_key}>
+                    <Link href={navigationItemUrl}>{text}</Link>
+                  </li>
+                )
+              )}
             </ul>
 
             {/* <!-- Header Icons --> */}
           </div>
 
           <div className="flex items-center space-x-5">
-            <Link href='/about'>
-            <button className="bg-primary text-sm font-bold tracking-wider hover:bg-white hover:border-primary border-2 border-primary text-white hover:text-black  py-2 px-7 rounded-full">
-              Contact
-            </button>
+            <Link href="/about">
+              <button className="bg-primary text-sm font-bold tracking-wider hover:bg-white hover:border-primary border-2 border-primary text-white hover:text-black  py-2 px-7 rounded-full">
+                Contact
+              </button>
             </Link>
           </div>
           {/* <!-- Responsive navbar --> */}

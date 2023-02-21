@@ -2,7 +2,6 @@ import React from "react";
 import AboutBreadCrumb from "../components/about/AboutBreadCrumb";
 import Brands from "../components/about/Brands";
 import Capabalities from "../components/about/Goals";
-import Testimonial from "../components/about/Leader";
 import Footer from "../components/Generic/Footer";
 import Navbar from "../components/Generic/Navbar";
 import Banner from "../components/home/Banner";
@@ -15,7 +14,7 @@ let heading = "Eu tincidunt amet vulputate consectetur";
 let description =
   "Nunc sed lorem a a id. Faucibus sed amet arcu mattis elementum erat. Mauris id donec et tellus ac aliquam augue erat aliquam. Non vel dapibus sociis porttitor sit quam. Lectus feugiat mattis augue turpis duis dapibus diam maecenas. Faucibus massa dictumst aliquam mauris tempus purus sit. Nulla aliquet sed blandit odio enim lorem quis. Elementum adipiscing in blandit ligula fringilla. Suspendisse elementum senectus in convallis ut tempus sed.";
 
-import topImage from "/public/images/about/about_top.jpeg";
+
 import Image from "next/image";
 import client from "../client";
 import getImageUrl from "../utils/getImageUrl";

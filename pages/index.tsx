@@ -17,7 +17,9 @@ import Head from "next/head";
 import Features from "../components/home/Features";
 import Instructions from "../components/home/Instructions";
 
-export default function Home({ data }: any) {
+import printData from '../print';
+
+export default function Home({ data, navigation }: any) {
 
 
   return (
@@ -26,7 +28,7 @@ export default function Home({ data }: any) {
         <title>{data.title}</title>
       </Head>
       <TopBar />
-      <Navbar />
+      <Navbar navigation={navigation}/>
       <Hero content={data.content[0]}/>
       <CookieBanner />
 
@@ -57,9 +59,15 @@ export default function Home({ data }: any) {
 export async function getStaticProps() {
   const homeData = await client.fetch(`*[_type == 'home']`);
 
+  let navigationData = await client.fetch(`*[_type == 'navigation']`);
+  navigationData = navigationData.filter((item: any) => (item.navId.current === 'mainMenu'));
+  
+  printData(navigationData)
+  
   return {
     props: {
       data: homeData[0],
+      navigation: navigationData[0]
     },
   };
 }

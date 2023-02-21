@@ -1,7 +1,7 @@
 import React from "react";
 import InstrctionsListItem from "./InstrctionsListItem";
 
-let margins = ['40px', '60px', '50px'];
+let margins = ['40px', '70px', '120px'];
 let i = 0;
 function InstructionsList({ instructionsList }: any) {
   

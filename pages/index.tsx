@@ -18,8 +18,9 @@ import Features from "../components/home/Features";
 import Instructions from "../components/home/Instructions";
 
 import printData from '../print';
+import Cars from "../components/Generic/Cars";
 
-export default function Home({ data, topNavigation, footerNavigation }: any) {
+export default function Home({ data, topNavigation, footerNavigation, featuredCars }: any) {
 
 
   return (
@@ -44,7 +45,7 @@ export default function Home({ data, topNavigation, footerNavigation }: any) {
             <Image src={right_arrow} alt="icon" width={20} height={10} />
           </button>
         </div>
-        {/* <Cars cars_data={cars_data.slice(0, 3)} /> */}
+        <Cars featuredCars={featuredCars} />
       </div>
 
       <Instructions instructions={data.instructions[0]} />
@@ -59,17 +60,23 @@ export default function Home({ data, topNavigation, footerNavigation }: any) {
 export async function getStaticProps() {
   const homeData = await client.fetch(`*[_type == 'home']`);
 
+  let featuredCars = []
+  for (let i = 0; i < homeData[0].featuredCars.length; i++) {
+    let carProduct = await client.fetch(`*[_type == 'product' && _id == '${homeData[0].featuredCars[i]._ref}']`);
+    featuredCars.push(carProduct[0]);
+  }
+
   let navigationData = await client.fetch(`*[_type == 'navigation']`);
   let topNavigationData = navigationData.filter((item: any) => (item.navId.current === 'mainMenu'));
   let footerNavigationData = navigationData.filter((item: any) => (item.navId.current !== 'mainMenu'));
 
-  printData(navigationData)
   
   return {
     props: {
       data: homeData[0],
       topNavigation: topNavigationData[0],
-      footerNavigation: footerNavigationData
+      footerNavigation: footerNavigationData,
+      featuredCars
     },
   };
 }

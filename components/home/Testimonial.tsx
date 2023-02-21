@@ -8,9 +8,9 @@ import SliderCard from "./SliderCard";
 // Import Swiper styles
 import "swiper/css";
 
-export default function Testimonial({ persons }: any) {
+export default function Testimonial({ testimonials }: any) {
   return (
-    <div className="mx-auto py-10">
+    <div className="mx-auto py-10 mb-10">
       <Swiper
         spaceBetween={10}
         slidesPerView={1}
@@ -25,7 +25,7 @@ export default function Testimonial({ persons }: any) {
           },
         }}
       >
-        {persons.map(({ person_1, person_2 }: any, index: any) => (
+        {testimonials.map(({ person_1, person_2 }: any, index: any) => (
           <SwiperSlide key={new Date().toString()}>
             <SliderCard
               person_1={person_1}

@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 
-import Image from "next/image";
 import Car from "./Car";
 import getImageUrl from "../../utils/getImageUrl";
-import printData from "../../print";
+
 
 function Cars({ featuredCars }: any) {
 

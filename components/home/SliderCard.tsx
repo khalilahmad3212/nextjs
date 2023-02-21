@@ -1,44 +1,29 @@
 import Image from "next/image";
 import React from "react";
 
-import { GoStar } from "react-icons/go";
-
+import TestimonialCard from "./components/TestimonialCard";
 
 function SliderCard({ person_1, person_2, padding }: any) {
   return (
-    <div className="flex flex-col gap-2 px-6 lg:px-3">
+    <div className="flex flex-col gap-2 mb-10 px-6 lg:px-3">
       {[person_1, person_2].map(
-        ({ imageUrl, username, testimonial_date, title, description }, index) => {
+        (
+          { image, name, _createdAt, heading, description, rating, _id },
+          index
+        ) => {
           return (
-            <div
-              key={new Date().toString()}
-              className={`px-4 pt-6 rounded-lg shadow bg-white ${
-                index == 0 ? "pb-[" + padding + "px]" : "pb-6"
-              }`}
-              style={(index == 0 && padding != 0)? {paddingBottom: padding}:{paddingBottom: '1.2rem'} }
-            >
-              <div className="flex flex-row gap-2">
-                <Image className=" w-12 h-12" width={100} height={100} src={imageUrl} alt="Image" />
-                <div>
-                  <h3 className="text-md font-medium">{username}</h3>
-                  <p className="text-sm text-gray-400">{testimonial_date}</p>
-                </div>
-              </div>
-              <div className="flex my-4">
-                {[1, 2, 3, 4, 5].map(() => (
-                  <GoStar
-                    key={new Date().toString()}
-                    className="text-primary"
-                  />
-                ))}
-              </div>
-              <div>
-                <h3 className="text-sm font-[500] mb-3">{title}</h3>
-                <p className="text-[12px] text-justify pr-4 text-gray-500">
-                  {description}
-                </p>
-              </div>
-            </div>
+            <TestimonialCard
+              key={_id}
+              image={image}
+              name={name}
+              _createdAt={_createdAt}
+              heading={heading}
+              description={description}
+              rating={rating}
+              _id={_id}
+              padding={padding}
+              index={index}
+            />
           );
         }
       )}

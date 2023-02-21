@@ -17,24 +17,28 @@ import Head from "next/head";
 import Features from "../components/home/Features";
 import Instructions from "../components/home/Instructions";
 
-import printData from '../print';
+import printData from "../print";
 import Cars from "../components/Generic/Cars";
 
-export default function Home({ data, topNavigation, footerNavigation, featuredCars }: any) {
-
-
+export default function Home({
+  data,
+  topNavigation,
+  footerNavigation,
+  featuredCars,
+  testimonials,
+}: any) {
   return (
     <>
       <Head>
         <title>{data.title}</title>
       </Head>
       <TopBar />
-      <Navbar navigation={topNavigation}/>
-      <Hero content={data.content[0]}/>
+      <Navbar navigation={topNavigation} />
+      <Hero content={data.content[0]} />
       <CookieBanner />
 
-      <Features features={data.features[0]}/>
-      
+      <Features features={data.features[0]} />
+
       <div className="max-w-[1440px] mx-auto pt-24 px-5 mb-8 md:mb-16">
         <div className="flex flex-col md:flex-row justify-between">
           <h4 className="text-2xl md:text-3xl font-semibold">
@@ -49,10 +53,10 @@ export default function Home({ data, topNavigation, footerNavigation, featuredCa
       </div>
 
       <Instructions instructions={data.instructions[0]} />
-      
-      {/* <Testimonial persons={persons}/> */}
+
+      <Testimonial testimonials={testimonials} />
       <Banner />
-      <Footer navigations={footerNavigation}/>
+      <Footer navigations={footerNavigation} />
     </>
   );
 }
@@ -60,23 +64,47 @@ export default function Home({ data, topNavigation, footerNavigation, featuredCa
 export async function getStaticProps() {
   const homeData = await client.fetch(`*[_type == 'home']`);
 
-  let featuredCars = []
+  let featuredCars = [];
   for (let i = 0; i < homeData[0].featuredCars.length; i++) {
-    let carProduct = await client.fetch(`*[_type == 'product' && _id == '${homeData[0].featuredCars[i]._ref}']`);
+    let carProduct = await client.fetch(
+      `*[_type == 'product' && _id == '${homeData[0].featuredCars[i]._ref}']`
+    );
     featuredCars.push(carProduct[0]);
   }
 
   let navigationData = await client.fetch(`*[_type == 'navigation']`);
-  let topNavigationData = navigationData.filter((item: any) => (item.navId.current === 'mainMenu'));
-  let footerNavigationData = navigationData.filter((item: any) => (item.navId.current !== 'mainMenu'));
+  let topNavigationData = navigationData.filter(
+    (item: any) => item.navId.current === "mainMenu"
+  );
+  let footerNavigationData = navigationData.filter(
+    (item: any) => item.navId.current !== "mainMenu"
+  );
 
-  
+  // fetching testimonial data
+  let testimonials: any = [];
+  const testimonialsData = await client.fetch(`*[_type == 'testimonial']`);
+
+  if (testimonialsData.length % 2) {
+    let temp = testimonialsData[testimonialsData.length - 1];
+    testimonialsData.push(temp);
+  }
+
+  let end = Math.floor(testimonialsData.length / 2);
+
+  for (let i = 0; i < end; i++) {
+    testimonials.push({
+      person_1: testimonialsData[i],
+      person_2: testimonialsData[i + end],
+    });
+  }
+
   return {
     props: {
       data: homeData[0],
       topNavigation: topNavigationData[0],
       footerNavigation: footerNavigationData,
-      featuredCars
+      featuredCars,
+      testimonials,
     },
   };
 }

@@ -3,12 +3,14 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 import { IoMdArrowDropdown } from "react-icons/io";
+import printData from "../../print";
 import Dropdown from "./Dropdown";
 
 import desktopLogo from "/public/images/home/desktop_logo.jpeg";
 import mobileLogo from "/public/images/home/mobile_logo.jpeg";
 
 function Navbar({ navigation }: any) {
+
   return (
     <>
       <section className="relative mx-auto max-w-[1400px]">
@@ -30,9 +32,9 @@ function Navbar({ navigation }: any) {
             {/* <!-- Nav Links --> */}
             <ul className="hidden md:flex px-4 mx-auto font-heading space-x-12">
               <li className="relative">
-                <Dropdown dropdownItems={navigation.dropdownItems} />
+                <Dropdown dropdownItems={navigation[0].dropdownItems} />
               </li>
-              {navigation.navItem.map(
+              {navigation[0].navItem.map(
                 ({ text, navigationItemUrl, _key }: any) => (
                   <li key={_key}>
                     <Link href={navigationItemUrl}>{text}</Link>

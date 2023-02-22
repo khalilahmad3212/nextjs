@@ -7,12 +7,16 @@ import TopBar from "../../components/home/TopBar";
 import ProductSlider from "../../components/product/ProductSlider";
 import client from "../../client";
 import { log } from "console";
+import Head from "next/head";
 
-function Product({ car_data }: any) {
+function Product({ car_data, topNavigation, footerNavigation }: any) {
   return (
     <>
+      {/* <Head>
+        <title>{data.title}</title>
+      </Head> */}
       <TopBar />
-      <Navbar />
+      <Navbar navigation={topNavigation} />
       <ProductSlider
         sliderImages={[car_data.image_01, car_data.image_02, car_data.image_03]}
       />
@@ -21,7 +25,7 @@ function Product({ car_data }: any) {
         description={car_data.detailed_description}
         tags={car_data.tags}
       />
-      <Footer />
+      <Footer navigations={footerNavigation}/>
     </>
   );
 }
@@ -53,13 +57,19 @@ export async function getStaticProps(context: any) {
       tags
   }`);
 
-  // console.log('\n\n\n\n\n\n\n');
-  // console.log('Car Data: ', car_data);
-  // console.log('\n\n\n\n\n\n\n');
+  let navigationData = await client.fetch(`*[_type == 'navigation']`);
+  let topNavigationData = navigationData.filter(
+    (item: any) => item.navId.current === "mainMenu"
+  );
+  let footerNavigationData = navigationData.filter(
+    (item: any) => item.navId.current !== "mainMenu"
+  );
 
   return {
     props: {
       car_data: car_data[0],
+      topNavigation: topNavigationData,
+      footerNavigation: footerNavigationData
     },
   };
 }

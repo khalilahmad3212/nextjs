@@ -1,5 +1,5 @@
 import React from "react";
-+import Footer from "../../components/Generic/Footer";
+import Footer from "../../components/Generic/Footer";
 import Navbar from "../../components/Generic/Navbar";
 import CarData from "../../components/product/CarData";
 import TopBar from "../../components/home/TopBar";
@@ -7,19 +7,22 @@ import ProductSlider from "../../components/product/ProductSlider";
 import client from "../../client";
 
 
-function Product({ car_data }: any) {
+function Product({ car_data, topNavigation, footerNavigation }: any) {
 
   return (
     <>
+      {/* <Head>
+        <title>{data.title}</title>
+      </Head> */}
       <TopBar />
-      <Navbar />
+      <Navbar navigation={topNavigation} />
       <ProductSlider sliderImages={[car_data.image_01,car_data.image_02, car_data.image_03]}/>
       <CarData 
         title={car_data.title}
         description={car_data.detailed_description}
         tags={car_data.tags}
       />
-      <Footer />
+      <Footer navigations={footerNavigation}/>
     </>
   );
 }
@@ -29,7 +32,6 @@ export default Product;
 
 export async function getStaticPaths() {
   const paths = await client.fetch(`*[_type == "car"]{_id}`);
-  console.log('\n\n\n\nEntered\n\n\n\n');
 
   return {
     paths: paths.map(({ _id }: any) => ({ params: { slug: _id } })),
@@ -50,15 +52,19 @@ export async function getStaticProps(context: any) {
       tags
   }`);
 
+  let navigationData = await client.fetch(`*[_type == 'navigation']`);
+  let topNavigationData = navigationData.filter(
+    (item: any) => item.navId.current === "mainMenu"
+  );
+  let footerNavigationData = navigationData.filter(
+    (item: any) => item.navId.current !== "mainMenu"
+  );
 
-
-  console.log('\n\n\n\n\n\n\n');
-  console.log('Car Data: ', car_data);
-  console.log('\n\n\n\n\n\n\n');
-  
   return {
     props: {
-      car_data: car_data[0]
+      car_data: car_data[0],
+      topNavigation: topNavigationData,
+      footerNavigation: footerNavigationData
     },
   };
 }

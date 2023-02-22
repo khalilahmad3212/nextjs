@@ -86,7 +86,7 @@ export async function getStaticProps() {
     props: {
       data: missionData[0],
       leaders,
-      topNavigation: topNavigationData,
+      topNavigation: topNavigationData[0],
       footerNavigation: footerNavigationData,
     },
   };

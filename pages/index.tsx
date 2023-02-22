@@ -72,10 +72,14 @@ export async function getStaticProps() {
     featuredCars.push(carProduct[0]);
   }
 
+
+  // feching navigations
   let navigationData = await client.fetch(`*[_type == 'navigation']`);
+  
   let topNavigationData = navigationData.filter(
     (item: any) => item.navId.current === "mainMenu"
   );
+  
   let footerNavigationData = navigationData.filter(
     (item: any) => item.navId.current !== "mainMenu"
   );

@@ -32,9 +32,9 @@ function Navbar({ navigation }: any) {
             {/* <!-- Nav Links --> */}
             <ul className="hidden md:flex px-4 mx-auto font-heading space-x-12">
               <li className="relative">
-                <Dropdown dropdownItems={navigation[0].dropdownItems} />
+                <Dropdown dropdownItems={navigation.dropdownItems} />
               </li>
-              {navigation[0].navItem.map(
+              {navigation.navItem.map(
                 ({ text, navigationItemUrl, _key }: any) => (
                   <li key={_key}>
                     <Link href={navigationItemUrl}>{text}</Link>

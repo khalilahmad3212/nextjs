@@ -63,7 +63,7 @@ export async function getStaticProps(context: any) {
   return {
     props: {
       car_data: car_data[0],
-      topNavigation: topNavigationData,
+      topNavigation: topNavigationData[0],
       footerNavigation: footerNavigationData
     },
   };
